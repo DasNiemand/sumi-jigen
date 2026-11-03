@@ -17,13 +17,16 @@ Item {
     property real fraction: 1
     property bool nearEnd: false
     property real scaleU: 1
+    property string preset: "paper"
+    property real tint: 0.12
+    property real inkDarken: 1.5
     signal clicked()
 
     readonly property bool hovered: mouse.containsMouse
     width: Math.round(196 * scaleU)
     height: Math.round(72 * scaleU)
 
-    SumiTheme { id: pal; bgColor: card.bgColor; fgColor: card.fgColor; accentColor: card.accentColor }
+    SumiTheme { id: pal; bgColor: card.bgColor; fgColor: card.fgColor; accentColor: card.accentColor; tint: card.tint; inkDarken: card.inkDarken; preset: card.preset }
     readonly property color bodyC: hovered ? pal.ink : pal.paper
     readonly property color textC: hovered ? pal.paper : pal.ink
     readonly property color subC: hovered ? pal.rule : pal.soft

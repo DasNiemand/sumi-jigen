@@ -25,6 +25,7 @@ Item {
     property string fontData: "monospace"       // vai trò data
     property string fontNumeral: "monospace"    // vai trò numeral (số lớn)
     property string fontKanji: Qt.application.font.family   // vai trò kanji (mặc định = font hệ thống như bản gốc)
+    property string preset: "paper"             // theme: paper|ink|mono-white|mono-black|accent|follow
     property real tint: 0.12
     property real inkDarken: 1.5
     property int bootMs: 900
@@ -61,7 +62,7 @@ Item {
     function lum(c) { return 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b }
 
     // ===== Bảng màu: công thức nằm ở lib/SumiTheme.qml =====
-    SumiTheme { id: th; bgColor: ov.bgColor; fgColor: ov.fgColor; accentColor: ov.accentColor; tint: ov.tint; inkDarken: ov.inkDarken }
+    SumiTheme { id: th; bgColor: ov.bgColor; fgColor: ov.fgColor; accentColor: ov.accentColor; tint: ov.tint; inkDarken: ov.inkDarken; preset: ov.preset }
     readonly property color cDanger: dangerColor
     readonly property color paper: th.paper
     readonly property color ink: th.ink

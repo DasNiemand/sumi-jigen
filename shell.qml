@@ -21,6 +21,7 @@ ShellRoot {
     SumiKeyMap { id: km }
 
     // ----- Look + timing từ config (mặc định = giá trị gốc) -----
+    readonly property string themePreset: cfg.look("theme", "paper")
     readonly property real tint: cfg.lookNum("tint", 0, 0.6, 0.12)
     readonly property real inkDarken: cfg.lookNum("inkDarken", 1, 2.5, 1.5)
     readonly property real scanOpacity: cfg.lookNum("scanlineOpacity", 0, 0.2, 0.05)
@@ -551,6 +552,9 @@ ShellRoot {
                     bgColor: root.bgColor
                     fgColor: root.fgColor
                     accentColor: root.accentColor
+                    preset: root.themePreset
+                    tint: root.tint
+                    inkDarken: root.inkDarken
                     dangerColor: root.dangerColor
                     fontData: root.fontData
                     fontNumeral: root.fontNumeral
@@ -833,6 +837,7 @@ ShellRoot {
                             fontData: root.fontData
                             fontNumeral: root.fontNumeral
                             fontKanji: root.fontKanji
+                            preset: root.themePreset
                             tint: root.tint
                             inkDarken: root.inkDarken
                             bootMs: root.bootMs
