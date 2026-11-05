@@ -166,15 +166,10 @@ Item {
             font.family: ov.fontLabel; font.pixelSize: fs(14); font.letterSpacing: 2
         }
 
-        PointObject {
-            shape: "hourglass"
+        ObjectSlot {
+            ov: lay.ov
+            fn: "timer"
             x: -lay.objHalf; y: -lay.objHalf; width: lay.objHalf * 2; height: width
-            ink: ov.ink
-            soft: ov.soft
-            cells: 56
-            idleSpeed: 0.014
-            tilt: 0.22
-            rotX: 0.22
             running: ov.active && !ov.closing && lay.visible
         }
     }

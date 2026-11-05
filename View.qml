@@ -67,6 +67,28 @@ Item {
     readonly property color paper: th.paper
     readonly property color ink: th.ink
     readonly property color soft: th.soft
+
+    // ===== Object theo function (Object API của SUMI) =====
+    // objectCfg = config.apps.jigen.objects đọc thô: { <function>: {id, speed, grid, interactive} }.
+    // Giá trị sai hoặc thiếu rơi về mặc định (xem objectFor); danh sách objectAllowed phải khớp manifest.json.
+    property var objectCfg: ({})
+    readonly property var objectAllowed: ({
+        shutdown: ["globe", "torus", "hourglass"],
+        reboot: ["globe", "torus", "hourglass"],
+        timer: ["globe", "torus", "hourglass"]
+    })
+    readonly property var objectDefaults: ({ shutdown: "globe", reboot: "torus", timer: "hourglass" })
+    readonly property var objPalette: ({ ink: ink, soft: soft, danger: cDanger })
+    function objectDefault(fn) { return objectDefaults[fn] || "globe" }
+    function objectFor(fn) {
+        const raw = (objectCfg !== null && typeof objectCfg === "object" && objectCfg[fn] !== null && typeof objectCfg[fn] === "object") ? objectCfg[fn] : ({})
+        const allowed = objectAllowed[fn] || []
+        const id = (typeof raw.id === "string" && allowed.indexOf(raw.id) >= 0) ? raw.id : objectDefault(fn)
+        const speed = (typeof raw.speed === "number" && isFinite(raw.speed)) ? Math.max(0, Math.min(5, raw.speed)) : 1
+        const grid = (typeof raw.grid === "number" && isFinite(raw.grid) && raw.grid >= 44 && raw.grid <= 56) ? Math.round(raw.grid) : 0
+        const interactive = (typeof raw.interactive === "boolean") ? raw.interactive : true
+        return ({ id: id, speed: speed, grid: grid, interactive: interactive })
+    }
     readonly property color rule: th.rule
     readonly property color wash: th.wash
     readonly property color ghostB: th.ghostB

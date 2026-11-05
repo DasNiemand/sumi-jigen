@@ -100,14 +100,12 @@ Item {
             }
         }
 
-        PointObject {
+        ObjectSlot {
             id: torus
-            shape: "torus"
+            ov: lay.ov
+            fn: "reboot"
             readonly property real half: lay.ringR1 - px(70)
             x: -half; y: -half; width: half * 2; height: width
-            ink: ov.ink
-            soft: ov.soft
-            cells: 54
             running: ov.active && !ov.closing && lay.visible
         }
 

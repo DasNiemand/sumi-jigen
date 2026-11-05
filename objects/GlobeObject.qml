@@ -13,6 +13,7 @@ Item {
     property real idleSpeed: 0.012
     property real tilt: 0.35
     property bool running: true
+    property bool interactive: true      // false: không kéo/xoay được, con trỏ không đổi
     readonly property bool dragging: dragArea.pressed
     property real spinVel: idleSpeed
 
@@ -103,6 +104,7 @@ Item {
     MouseArea {
         id: dragArea
         anchors.fill: parent
+        enabled: interactive
         hoverEnabled: true
         cursorShape: pressed ? Qt.ClosedHandCursor : Qt.OpenHandCursor
         property real lastX: 0

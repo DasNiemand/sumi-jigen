@@ -374,11 +374,11 @@ Item {
         }
 
         // Quả cầu (kéo để xoay, bấm đúp đổi chiều)
-        GlobeObject {
+        ObjectSlot {
+            ov: lay.ov
+            fn: "shutdown"
             x: -globeBox.gR; y: -globeBox.gR
             width: globeBox.gR * 2; height: width
-            ink: ov.ink
-            soft: ov.soft
             running: ov.active && !ov.closing && lay.visible
         }
     }

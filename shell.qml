@@ -133,6 +133,8 @@ ShellRoot {
     readonly property string fontData: cfg.font("data", "monospace")
     readonly property string fontNumeral: cfg.font("numeral", "monospace")
     readonly property string fontKanji: cfg.font("kanji", Qt.application.font.family)
+    // Object theo function (globe/torus/hourglass...): apps.jigen.objects trong config.json, View tự kiểm tra từng giá trị.
+    readonly property var objectCfg: { const a = cfg.appObj(); return cfg.isObj(a.objects) ? a.objects : ({}) }
     property string userName: Quickshell.env("USER") || ""
 
     // Animation OUT: bấm Yes/No/Esc không thực thi ngay mà cho overlay chạy hiệu ứng tắt
@@ -837,6 +839,7 @@ ShellRoot {
                             fontData: root.fontData
                             fontNumeral: root.fontNumeral
                             fontKanji: root.fontKanji
+                            objectCfg: root.objectCfg
                             preset: root.themePreset
                             tint: root.tint
                             inkDarken: root.inkDarken
