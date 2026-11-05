@@ -35,6 +35,7 @@ Item {
     property bool glitchEnabled: true
     property real scaleBoost: 1
     property string userName: ""
+    property bool previewMode: false        // true: bản thu nhỏ trong hub (View này vốn không nhận phím; shell.qml giữ phím và hành động thật)
     property int choice: 0                  // shutdown/reboot: 0 = Yes, 1 = No
     property var checkpoints: [5, 15, 30, 60]
     property int selectedIndex: 2
